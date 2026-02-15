@@ -25,7 +25,7 @@ resource "tfe_workspace" "parent" {
   queue_all_runs = false
   vcs_repo {
     branch         = "main"
-    identifier     = "kushaly1996/test_terraform_cloud"
+    identifier     = "kushaly1996/tfws-tenant-harness"
     oauth_token_id = "ot-ewrzLDu5kcjzVFgU"
   }
 }
