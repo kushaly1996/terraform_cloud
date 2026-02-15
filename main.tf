@@ -1,3 +1,14 @@
+locals {
+  # Get a list of all yaml files in a specific directory
+  all_tenants_raw = [for x in fileset(path.module, "tenants/*.yaml") : yamldecode(file(x))]
+  all_tenants     = { for x in local.all_tenants_raw : x.name => x }
+
+}
+
+output "all_tnants" {
+  value = local.all_tenants
+}
+
 data "tfe_organization" "my_org" {
   name = "kushal_devops"
 }
@@ -8,7 +19,8 @@ data "tfe_oauth_client" "client" {
 }
 
 resource "tfe_workspace" "parent" {
-  name           = "my-test-workspace"
+  for_each       = local.all_tenants
+  name           = "my-${each.value.name}"
   organization   = data.tfe_organization.my_org.name
   queue_all_runs = false
   vcs_repo {

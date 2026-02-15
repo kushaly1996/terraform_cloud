@@ -8,6 +8,6 @@ terraform {
   required_version = ">= 1.5.5"
 }
 
-# provider "tfe" {
-#   token = "" 
-# }
+provider "tfe" {
+  token = ""
+}
