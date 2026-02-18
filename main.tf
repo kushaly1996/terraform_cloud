@@ -22,7 +22,7 @@ resource "tfe_workspace" "parent" {
   for_each       = local.all_tenants
   name           = "my-${each.value.name}"
   organization   = data.tfe_organization.my_org.name
-  queue_all_runs = false
+  queue_all_runs = true
   vcs_repo {
     branch         = "main"
     identifier     = "kushaly1996/tfws-tenant-harness"
