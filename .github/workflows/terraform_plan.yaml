@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: action/checkout@v3
       - name: Setup terraform
-        uses: hasicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
