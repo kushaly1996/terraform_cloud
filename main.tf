@@ -35,6 +35,6 @@ resource "tfe_variable" "name" {
   key          = "tenant_name"
   value        = each.value.name
   category     = "terraform"
-  workspace_id = resource.tfe_workspace[each.key].parent.id
+  workspace_id = tfe_workspace.parent[each.key].id
   description  = "a useful description"
 }
