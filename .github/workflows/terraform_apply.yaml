@@ -1,9 +1,9 @@
-name: terraform plan
+name: terraform apply
 
 on:
-  pull_request:
-    paths:
-      - ./*
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
@@ -12,8 +12,8 @@ env:
   TF_VAR_oauth_name: kushal-github-oauth
 
 jobs:
-  terraform_plan:
-    name: Teraform plan
+  terraform_apply:
+    name: Teraform apply
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,6 @@ jobs:
       - name: Terraform init
         id: init
         run: terraform init
-      - name: Terraform plan
-        id: plan
-        run: terraform plan -input=false
+      - name: Terraform apply
+        id: apply
+        run: terraform apply -input=false -auto-approve
