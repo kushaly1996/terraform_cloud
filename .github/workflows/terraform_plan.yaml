@@ -1,0 +1,32 @@
+name: terraform plan
+
+on:
+  pull_request:
+    paths:
+      - ./*
+    workflow_dispatch:
+
+env:
+  TF_VAR_tfe_token: "${{ secrets.TFE_TOKEN }}"
+  TF_VAR_oauth_token_id: "${{ secrets.OAUTH_TOKEN_ID }}"
+  TF_VAR_oauth_name: kushal-github-oaut
+
+jobs:
+  terraform_plan:
+    name: Teraform plan
+    runs_on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: action/checkout@v3
+      - name: Setup terraform
+        uses: hasicorp/setup-terraform@v2
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+      - name: Terraform init
+        id: init
+        run: terraform init
+      - name: Terraform plan
+        id: plan
+        run: terraform plan -input=false
