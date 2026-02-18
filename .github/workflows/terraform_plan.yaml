@@ -10,6 +10,7 @@ env:
   TF_VAR_tfe_token: "${{ secrets.TFE_TOKEN }}"
   TF_VAR_oauth_token_id: "${{ secrets.OAUTH_TOKEN_ID }}"
   TF_VAR_oauth_name: kushal-github-oauth
+  TF_VAR_platform_api_key: "${{ secrets.PLATFORM_API_KEY }}"
 
 jobs:
   terraform_plan:
