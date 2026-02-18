@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - ./*
-    workflow_dispatch:
+  workflow_dispatch:
 
 env:
   TF_VAR_tfe_token: "${{ secrets.TFE_TOKEN }}"
