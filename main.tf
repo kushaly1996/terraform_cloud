@@ -42,6 +42,7 @@ resource "tfe_variable" "name" {
 # account id and api token of harness to create harness resources
 
 resource "tfe_variable" "harness_account_id" {
+  for_each     = local.all_tenants
   key          = "account_id"
   value        = var.account_id
   category     = "terraform"
@@ -50,6 +51,7 @@ resource "tfe_variable" "harness_account_id" {
 }
 
 resource "tfe_variable" "harness_platform_api_key" {
+  for_each     = local.all_tenants
   key          = "platform_api_key"
   value        = var.platform_api_key
   category     = "terraform"
