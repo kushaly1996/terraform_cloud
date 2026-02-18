@@ -15,7 +15,7 @@ data "tfe_organization" "my_org" {
 
 data "tfe_oauth_client" "client" {
   organization = data.tfe_organization.my_org.name
-  name         = var.oauth_name
+  name         = var.oauth_name ## oauth_name = "kushal-github-oauth"
 }
 
 resource "tfe_workspace" "parent" {
@@ -26,6 +26,6 @@ resource "tfe_workspace" "parent" {
   vcs_repo {
     branch         = "main"
     identifier     = "kushaly1996/tfws-tenant-harness"
-    oauth_token_id = "ot-ewrzLDu5kcjzVFgU"
+    oauth_token_id = var.oauth_token_id #"ot-ewrzLDu5kcjzVFgU"
   }
 }
