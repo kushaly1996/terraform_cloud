@@ -38,3 +38,21 @@ resource "tfe_variable" "name" {
   workspace_id = tfe_workspace.parent[each.key].id
   description  = "a useful description"
 }
+
+# account id and api token of harness to create harness resources
+
+resource "tfe_variable" "harness_account_id" {
+  key          = "account_id"
+  value        = var.account_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.parent[each.key].id
+  description  = "a useful description"
+}
+
+resource "tfe_variable" "harness_platform_api_key" {
+  key          = "platform_api_key"
+  value        = var.platform_api_key
+  category     = "terraform"
+  workspace_id = tfe_workspace.parent[each.key].id
+  description  = "a useful description"
+}
