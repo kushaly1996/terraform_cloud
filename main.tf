@@ -29,3 +29,12 @@ resource "tfe_workspace" "parent" {
     oauth_token_id = var.oauth_token_id #"ot-ewrzLDu5kcjzVFgU"
   }
 }
+
+resource "tfe_variable" "name" {
+  for_each     = local.all_tenants
+  key          = "tenant_name"
+  value        = each.value.name
+  category     = "terraform"
+  workspace_id = tfe_workspace.parent.id
+  description  = "a useful description"
+}
