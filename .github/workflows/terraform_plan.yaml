@@ -9,7 +9,7 @@ on:
 env:
   TF_VAR_tfe_token: "${{ secrets.TFE_TOKEN }}"
   TF_VAR_oauth_token_id: "${{ secrets.OAUTH_TOKEN_ID }}"
-  TF_VAR_oauth_name: kushal-github-oaut
+  TF_VAR_oauth_name: kushal-github-oauth
 
 jobs:
   terraform_plan:
