@@ -39,6 +39,15 @@ resource "tfe_variable" "name" {
   description  = "a useful description"
 }
 
+resource "tfe_variable" "app_id" {
+  for_each     = local.all_tenants
+  key          = "app_id"
+  value        = each.value.name
+  category     = "terraform"
+  workspace_id = tfe_workspace.parent[each.key].id
+  description  = "a useful description"
+}
+
 # account id and api token of harness to create harness resources
 
 resource "tfe_variable" "harness_account_id" {
